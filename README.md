@@ -8,11 +8,13 @@ The app could also be given a postcode for a destination, and give you direction
 
 ## Data Sources ##
 We will need:
+
 * The NaPTAN data from [here](http://data.gov.uk/dataset/naptan). This gives us the locations of all Public Transport nodes in Great Britain, including station, coach terminals, airports, ferry terminals, and most importantly, bus stops!
 * Some crime data. Probably from www.police.uk, which has [an api](www.police.uk/api/docs).
 * Google maps, and the related [maps api](code.google.com/apis/maps/index.html), [directions api](http://code.google.com/apis/maps/documentation/directions/), and [overlays api](code.google.com/apis/maps/documentation/javascript/overlays.html) (probably).
 
 We may also need:
+
 * The NPTDR data from [here](http://data.gov.uk/dataset/nptdr). This contains a snapshot of all public transport journeys.
 
 ## Structure ##
