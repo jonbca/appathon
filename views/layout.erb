@@ -6,6 +6,20 @@
   <title>Appathon</title>
   <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+</head>
+<body>
+  <div id="container">
+    <header>
+      <h1>Appathon</h1>
+    </header>
+    
+    <%= yield %>
+    
+    <footer>
+      <p>Copyright blah blah blah</p>
+    </footer>
+  </div>
+  
   <script type="text/javascript">
       var map;
 
@@ -58,18 +72,5 @@
 
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-</head>
-<body>
-  <div id="container">
-    <header>
-      <h1>Appathon</h1>
-    </header>
-    
-    <%= yield %>
-    
-    <footer>
-      <p>Copyright blah blah blah</p>
-    </footer>
-  </div>
 </body>
 </html>
