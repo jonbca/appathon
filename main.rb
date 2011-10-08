@@ -6,5 +6,6 @@ require 'sinatra'
 # set :variable, etc
 
 get '/' do
+	@coords = "console.log('test');"
 	erb :index
 end

@@ -28,6 +28,7 @@ function initialize() {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
   }
+  
 }
 
 function handleNoGeolocation(errorFlag) {
