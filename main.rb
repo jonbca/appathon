@@ -7,5 +7,5 @@ require 'sinatra'
 
 get '/' do
 	@message = "Hello safe night bus app!"
-	erb :hello
+	erb :default
 end
