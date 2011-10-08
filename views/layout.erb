@@ -7,16 +7,6 @@
   <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
   <script type="text/javascript" src="/js/map.js"></script>
-  <script type="text/javascript">
-
-	var myOptions = {noClear: true}
-	var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-
-	var marker = new google.maps.Marker({
-		position: new google.maps.LatLng(25.774252, -80.190262),
-		map: map
-	});
-  </script>
 </head>
 <body>
   <div id="container">
@@ -29,5 +19,18 @@
       <p>&copy; Copyright <a href="http://groupspaces.com/SVC2Edinburgh/item/176545">Appathon</a> team 21</p>
     </footer>
   </div>
+  <script type="text/javascript">
+	var myOptions = {noClear: true}
+	console.log("trying to load map...");
+	var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
+	console.log(map);
+
+
+	marker = new google.maps.Marker({
+		position: new google.maps.LatLng(55.9449704019074, -3.193202018737793),
+		map: map,
+	});
+	console.log(marker);
+  </script>
   </body>
 </html>
