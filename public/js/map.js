@@ -24,16 +24,6 @@ function initialize() {
     }, function() {
       handleNoGeolocation(true);
     });
-
-      var pos = new google.maps.LatLng(39.346246,-76.624446);
-
-      var infowindow = new google.maps.InfoWindow({
-        map: map,
-        position: pos,
-        content: 'Location found using HTML5.'
-      });
-
-    
   } else {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
@@ -49,8 +39,8 @@ function handleNoGeolocation(errorFlag) {
 
   var options = {
     map: map,
-    position: new google.maps.LatLng(60, 105),
-    content: content
+    position: new google.maps.LatLng(39.346246,-76.624446),
+    content: 'Location not found, using static position'
   };
 
   var infowindow = new google.maps.InfoWindow(options);
