@@ -24,6 +24,16 @@ function initialize() {
     }, function() {
       handleNoGeolocation(true);
     });
+
+      var pos = new google.maps.LatLng(39.346246,-76.624446);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'Location found using HTML5.'
+      });
+
+    
   } else {
     // Browser doesn't support Geolocation
     handleNoGeolocation(false);
