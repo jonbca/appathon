@@ -6,8 +6,7 @@ require 'sinatra'
 # set :variable, etc
 
 get '/' do
-	@message = "Hello safe night bus app!"
-	erb :default
+	erb :index
 end
 
 get '/testmap' do

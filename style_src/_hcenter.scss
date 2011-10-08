@@ -1,7 +1,0 @@
-/* Horizontally centers an object */
-@mixin hcenter($width) {
-	position: relative;
-	width: $width;
-	left: 50%;
-	margin-left: -$width/2;
-}
