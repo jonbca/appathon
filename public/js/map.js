@@ -39,7 +39,7 @@ function handleNoGeolocation(errorFlag) {
 
   var options = {
     map: map,
-    position: new google.maps.LatLng(39.346246,-76.624446),
+    position: new google.maps.LatLng(51.50131,-0.124862),
     content: 'Location not found, using static position'
   };
 
