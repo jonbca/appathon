@@ -20,17 +20,66 @@
     </footer>
   </div>
   <script type="text/javascript">
-	var myOptions = {noClear: true}
-	console.log("trying to load map...");
-	var map = new google.maps.Map(document.getElementById('map_canvas'), myOptions);
-	console.log(map);
+var map;
 
+function initialize() {
+  var myOptions = {
+    zoom: 15,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById('map_canvas'),
+      myOptions);
 
-	marker = new google.maps.Marker({
-		position: new google.maps.LatLng(55.9449704019074, -3.193202018737793),
-		map: map,
-	});
-	console.log(marker);
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      var infowindow = new google.maps.InfoWindow({
+        map: map,
+        position: pos,
+        content: 'Your journey begins here!'
+      });
+
+      map.setCenter(pos);
+
+	// ADD MARKERS
+      <% @coords.each do |point| %>
+      marker = new google.maps.Marker({
+	  position: new google.maps.LatLng(<%= point %>),
+	  map: map,
+      });
+      <% end %>
+
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+  
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(51.50131,-0.124862),
+    content: 'Location not found, using static position'
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
   </script>
   </body>
 </html>
