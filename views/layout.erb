@@ -83,7 +83,7 @@ function handleNoGeolocation(errorFlag) {
 	title: 'You are here.',
 	icon: image
   });
-  var busimage = '/images/Google\ Maps\ Markers/green_MarkerB.png'
+  var busimage = '/images/bus.png'
       <% @buses.each do |k,v| %>
       marker = new google.maps.Marker({
 	  position: new google.maps.LatLng(<%= k %>),
