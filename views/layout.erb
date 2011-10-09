@@ -45,20 +45,6 @@ function initialize() {
       map.setCenter(pos);
 
 	// ADD MARKERS
-    <%
-    require 'sequel'
-    # location = pos
-    polygon = "GeomFromtext('Polygon((#{location[x]-100} #{location[y]-100},#{location[x]+100} #{location[y]-100},#{location[x]+100} #{location[y]+100},#{location[x]-100} #{location[y]+100},#{location[x]-100} #{location[y]-100}))'"
-
-    DB = Sequel.connect('mysql://appathon:appathon@appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com:3306/appathon')
-    rows = DB.fetch("SELECT * FROM street_crime WHERE MBRContains(#{polygon}, ukos);")
-    myHash = {}
-    rows.each{ |row|
-    	key = `python utmToLatLong.py 31 #{row[:easting]} #{row[:northing]}`
-	myHash[key].nil? ? myHash[key] = 1 : myHash[key] += 1
-    }
-    @coords = myHash
-    %>
       <% @coords.each do |k,v| %>
       marker = new google.maps.Marker({
 	  position: new google.maps.LatLng(<%= k %>),
