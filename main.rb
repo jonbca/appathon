@@ -19,13 +19,13 @@ def get_crimes_and_format
 	
 	myHash = {}
 	rows.each{ |row|
-		key = '"'+row[:easting].to_s+','+row[:northing].to_s + '"'
+		key = `python utmToLatLong.py 31 #{row[:easting]} #{row[:northing]}`
+		# key = '"'+row[:easting].to_s+','+row[:northing].to_s + '"'
 		myHash[key].nil? ? myHash[key] = 1 : myHash[key] += 1
 	}
 	return myHash
 end
 
 get '/dbtest' do
-	@coords = get_crimes_and_format
 	erb :index
 end
