@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sequel'
+require 'rubypython'
 
 # set :database => 'mysql://appathon:appathon@appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com:3306/appathon'
 # DB = Sequel.mysql 'appathon', :user => 'appathon', :password => 'appathon', :host => 'mysql://appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com', :port => '3306'
@@ -12,14 +13,19 @@ get '/' do
 end
 
 def get_crimes_and_format
-	rows = DB.fetch("SELECT * FROM street_crime WHERE MBRContains(GeomFromText('Polygon((359825.0 170625.0,359827 170625,359827 170627,359825 170627,359825 170625))'), ukos);")
-	@string = '["'
-	rows.each{ |row| @string << row[:easting].to_s+','+row[:northing].to_s+'","' }
-	@string << rows.first[:easting].to_s+','+rows.first[:northing].to_s+'"]'
-	puts @string
-	return @string
+	# location = ?? 
+	# polygon = "GeomFromtext('Polygon((#{location[x]-100} #{location[y]-100},#{location[x]+100} #{location[y]-100},#{location[x]+100} #{location[y]+100},#{location[x]-100} #{location[y]+100},#{location[x]-100} #{location[y]-100}))'"
+	rows = DB.fetch("SELECT * FROM street_crime WHERE MBRContains(GeomFromText('Polygon((359726 170526,359926 170526,359926 170726,359726 170726,359726 170526))'), ukos);")
+	
+	myHash = {}
+	rows.each{ |row|
+		key = '"'+row[:easting].to_s+','+row[:northing].to_s + '"'
+		myHash[key].nil? ? myHash[key] = 1 : myHash[key] += 1
+	}
+	return myHash
 end
 
 get '/dbtest' do
-	get_crimes_and_format
+	@coords = get_crimes_and_format
+	erb :index
 end

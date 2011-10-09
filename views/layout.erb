@@ -45,10 +45,11 @@ function initialize() {
       map.setCenter(pos);
 
 	// ADD MARKERS
-      <% @coords.each do |point| %>
+      <% @coords.each do |k,v| %>
       marker = new google.maps.Marker({
-	  position: new google.maps.LatLng(<%= point %>),
+	  position: new google.maps.LatLng(<%= k %>),
 	  map: map,
+	  title: <%= '"'+ v.to_s + ' crimes"'%>
       });
       <% end %>
 

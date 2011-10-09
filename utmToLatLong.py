@@ -1,4 +1,5 @@
 import math
+import sys
 
 def utmToLatLng(zone, easting, northing, northernHemisphere=True):
     if not northernHemisphere:
@@ -50,3 +51,8 @@ def utmToLatLng(zone, easting, northing, northernHemisphere=True):
     longitude = ((zone > 0) and (6 * zone - 183.0) or 3.0) - _a3
 
     return (latitude, longitude)
+
+if __name__ == "__main__":
+	print float(sys.argv[2])
+	print float(sys.argv[3])
+	print utmToLatLng(sys.argv[1], float(sys.argv[2]), float(sys.argv[3]))
