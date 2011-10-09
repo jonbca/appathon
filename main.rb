@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
+require 'mysql'
 require 'sequel'
 
 # set :database => 'mysql://appathon:appathon@appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com:3306/appathon'
