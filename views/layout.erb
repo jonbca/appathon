@@ -76,11 +76,22 @@ function handleNoGeolocation(errorFlag) {
     position: new google.maps.LatLng(51.455402, 0.194193),
     content: 'You are here.'
   };
+  var image = '/images/Google\ Maps\ Markers/blue_MarkerY.png'
   marker_you = new google.maps.Marker({
   	position: new google.maps.LatLng(51.455402, 0.194193),
 	map: map,
-	title: 'You are here.'
+	title: 'You are here.',
+	icon: image
   });
+  var busimage = '/images/Google\ Maps\ Markers/green_MarkerB.png'
+      <% @buses.each do |k,v| %>
+      marker = new google.maps.Marker({
+	  position: new google.maps.LatLng(<%= k %>),
+	  map: map,
+	  title: "bus stop here",
+	  icon: busimage
+      });
+      <% end %>
       <% @coords.each do |k,v| %>
       marker = new google.maps.Marker({
 	  position: new google.maps.LatLng(<%= k %>),
