@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'sinatra'
 require 'sequel'
-require 'rubypython'
 
 # set :database => 'mysql://appathon:appathon@appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com:3306/appathon'
 # DB = Sequel.mysql 'appathon', :user => 'appathon', :password => 'appathon', :host => 'mysql://appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com', :port => '3306'
