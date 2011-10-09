@@ -5,7 +5,7 @@ require 'sequel'
 
 # set :database => 'mysql://appathon:appathon@appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com:3306/appathon'
 # DB = Sequel.mysql 'appathon', :user => 'appathon', :password => 'appathon', :host => 'mysql://appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com', :port => '3306'
-#DB = Sequel.connect('mysql://appathon:appathon@appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com:3306/appathon')
+DB = Sequel.connect('mysql://appathon:appathon@appathon.cdmwtnbgpare.eu-west-1.rds.amazonaws.com:3306/appathon')
 
 get '/' do
 	@coords = ["55.9449704019074,-3.193202018737793","55.9518396,-3.1647041"]
@@ -13,8 +13,9 @@ get '/' do
 end
 
 get '/app' do
-	@coords = ["55.9449704019074,-3.193202018737793","55.9518396,-3.1647041"]
-  erb :app
+#	@coords = ["55.9449704019074,-3.193202018737793","55.9518396,-3.1647041"]
+  	@coords = {"51.450402, 0.195193" => 13,"51.450, 0.196193" => 8, "51.459, 0.197"=> 18, "51.449, 0.1955" => 10, "51.451, 0.196" => 8, "51.460, 0.190" => 1, "51.453, 0.190" => 24, "51.452, 0.193"=>3, "51.4525, 0.192"=> 10}
+  	erb :app
 end
 
 def get_crimes_and_format

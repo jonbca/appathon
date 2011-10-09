@@ -11,9 +11,8 @@ function initialize() {
   // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
-
+      // var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      var pos = new google.maps.LatLng('51.455402, 0.194193');
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
@@ -40,7 +39,7 @@ function handleNoGeolocation(errorFlag) {
 
   var options = {
     map: map,
-    position: new google.maps.LatLng(51.50131,-0.124862),
+    position: new google.maps.LatLng(55.455402, 0.194193),
     content: 'Location not found, using static position'
   };
 

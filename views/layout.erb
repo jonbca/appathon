@@ -10,7 +10,6 @@
 	<script type="text/javascript" src="js/cufon.js"></script>
 	<script type="text/javascript" src="js/jquery.main.js"></script>
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
-  <script type="text/javascript" src="js/map.js"></script>
 </head>
 <body>
   <div id="wrapper">
@@ -74,9 +73,21 @@ function handleNoGeolocation(errorFlag) {
 
   var options = {
     map: map,
-    position: new google.maps.LatLng(51.50131,-0.124862),
-    content: 'Location not found, using static position'
+    position: new google.maps.LatLng(51.455402, 0.194193),
+    content: 'You are here.'
   };
+  marker_you = new google.maps.Marker({
+  	position: new google.maps.LatLng(51.455402, 0.194193),
+	map: map,
+	title: 'You are here.'
+  });
+      <% @coords.each do |k,v| %>
+      marker = new google.maps.Marker({
+	  position: new google.maps.LatLng(<%= k %>),
+	  map: map,
+	  title: <%= '"'+ v.to_s + ' crimes"'%>
+      });
+      <% end %>
 
   var infowindow = new google.maps.InfoWindow(options);
   map.setCenter(options.position);
